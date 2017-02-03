@@ -62,5 +62,10 @@ gem 'bourbon', '~> 5.0.0.beta.7'
 gem 'neat', '~> 2.0.0.beta.1'
 gem 'refills', group: [:development, :test]
 
-# app-specific gems
+## app-specific gems
+# static pages
 gem 'high_voltage'
+# backend crud
+gem 'rails_admin', '~> 1.1', '>= 1.1.1'
+# model versioning and management
+gem 'paper_trail', '~> 6.0', '>= 6.0.2'
