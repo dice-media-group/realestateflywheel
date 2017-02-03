@@ -69,3 +69,5 @@ gem 'high_voltage'
 gem 'rails_admin', '~> 1.1', '>= 1.1.1'
 # model versioning and management
 gem 'paper_trail', '~> 6.0', '>= 6.0.2'
+# user model
+gem 'devise', '~> 4.2'
