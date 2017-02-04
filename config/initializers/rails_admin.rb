@@ -23,6 +23,13 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
+  ## == Custom Labeling ==
+  config.main_app_name = Proc.new { |controller| [ "RE Flywheel", 
+    "Backstage- #{controller.params[:action].try(:titleize)}" ] }
+
+  ## == Model configurations ==
+  RailsAdmin.config {|c| c.label_methods << :email}
+  
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
