@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :message_script do
+    title "MyString"
+    body "MyText"
+    belongs_to ""
+  end
   factory :contact do
     first_name "Firstname"
     last_name "LastName"
