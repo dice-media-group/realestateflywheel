@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
 
   ## == Cancan ==
-  # config.authorize_with :cancan
+  config.authorize_with :cancan #TODO add cancancan to rails_admin config
 
   ## == Pundit ==
   # config.authorize_with :pundit
