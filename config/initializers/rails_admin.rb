@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
 
   ## == Cancan ==
-  # config.authorize_with :cancan
+  config.authorize_with :cancan #TODO add cancancan to rails_admin config
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -23,6 +23,13 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
+  ## == Custom Labeling ==
+  config.main_app_name = Proc.new { |controller| [ "RE Flywheel", 
+    "Backstage- #{controller.params[:action].try(:titleize)}" ] }
+
+  ## == Model configurations ==
+  RailsAdmin.config {|c| c.label_methods << :email}
+  
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
