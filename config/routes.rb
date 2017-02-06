@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :message_scripts
   resources :contacts
   devise_for :users
   mount RailsAdmin::Engine => '/backstage', as: 'rails_admin'
