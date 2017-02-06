@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @message_script.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @message_script.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_script_path(@message_script) %> |
+<%= link_to 'Back', message_scripts_path %>
