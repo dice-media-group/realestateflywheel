@@ -14,3 +14,4 @@
 # local rvm settings
 .ruby-gemset
 .ruby-version
+.env

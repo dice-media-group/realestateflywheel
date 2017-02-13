@@ -15,7 +15,12 @@
 </head>
 <body class="<%= body_class %>">
   <%= render "flashes" -%>
+  <%= render "/shared/navigation" %>
+
+	<h1>Welcome to the flywheel</h1>
+
   <%= yield %>
+
   <%= render "javascript" %>
   <%= render "css_overrides" %>
 </body>
