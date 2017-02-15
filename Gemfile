@@ -58,8 +58,8 @@ group :staging, :production do
   gem "rack-timeout"
 end
 
-gem 'bourbon', '~> 5.0.0.beta.7'
-gem 'neat', '~> 2.0.0.beta.1'
+gem 'bourbon', '5.0.0.beta.6'
+gem 'neat', '~> 1.8.0'
 gem 'refills', group: [:development, :test]
 
 ## app-specific gems
@@ -83,3 +83,5 @@ gem 'json', '~> 2.0', '>= 2.0.3'
 gem 'omniauth', '~> 1.4'
 # gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'twilio-ruby', '~> 4.13'
+# message tracking engine
+gem 'mailboxer', '~> 0.14.0'
