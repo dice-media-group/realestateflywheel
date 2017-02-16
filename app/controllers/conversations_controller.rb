@@ -4,12 +4,22 @@ class ConversationsController < ApplicationController
 
   def create
     recipient_emails = conversation_params(:recipients).split(',')
-    recipients = User.where(email: recipient_emails).all
+    recipients = Contact.where(email: recipient_emails).all
 
-    conversation = current_user.
-      send_message(recipients, *conversation_params(:body, :subject)).conversation
+    conversation = current_user.send_message(recipients, *conversation_params(:body, :subject)).conversation
+    @message_sender = User.find(conversation_params[:message_sender]).first_name
+    render "index"
 
-    redirect_to conversation_path(conversation)
+    send_text_message
+    send_text_message_to_contact_from_current_user(contact_email: "", body:"Hi there", subject:"Hello")
+    
+    # recipient_emails = conversation_params(:recipients).split(',')
+    # recipients = User.where(email: recipient_emails).all
+    #
+    # conversation = current_user.
+    #   send_message(recipients, *conversation_params(:body, :subject)).conversation
+    #
+    # redirect_to conversation_path(conversation)
   end
 
   def reply
@@ -26,6 +36,13 @@ class ConversationsController < ApplicationController
     conversation.untrash(current_user)
     redirect_to :conversations
   end
+
+  def send_text_message_to_contact_from_current_user(contact_email: "", body:"Hi there", subject:"Hello")
+    message_body      = "#{body} -- from #{current_user.name}"
+    current_contact   = GuaranteedContact.find_by_email(Contact.first.email_address)
+    sent_message      = Courier.new.send_message(to: current_contact.primary_phone, body: message_body)
+  end
+
 
   private
 
@@ -54,4 +71,9 @@ class ConversationsController < ApplicationController
       end
     end
   end
+  
+  
+  
+
+  
 end

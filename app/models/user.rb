@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_messageable
+  # acts_as_messageable
          
   has_many :message_scripts,  :dependent => :destroy
   has_many :contacts,         :dependent => :destroy
+  has_many :messages
+
 
   ## does hmt fit this when we want the dependent attribute?
   # has_many :contacts,         through: :messages

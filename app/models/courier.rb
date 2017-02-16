@@ -15,5 +15,17 @@ class Courier
       body: body
     )
   end
+
+  def send_text_message(to: "6507418502", body: "Hello there!", from: '+16506514480')
+    message = client.messages.create(
+      from:   self.sanitize(from), 
+    	to:     self.sanitize(to), 
+      body:   body
+    )
+  end
+  
+  def sanitize(number)
+    "+1" + number.gsub(/$1|\+|\s|\(|\)|\-|\./, '')
+  end
   
 end

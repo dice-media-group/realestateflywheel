@@ -1,3 +1,4 @@
+<div style="@include outer-container">
 <%= simple_form_for(@message) do |f| %>
   <%= f.error_notification %>
 
@@ -7,16 +8,15 @@
 	<%= f.text_area :body, size: "60x12" %>
   </div>
 
+<div id="contacts">
+	<%= f.association :contact %>
+	
+</div>
   <div class="form-actions">
     <%#= f.button :submit %>
     <%= f.button :submit, class: 'btn-primary' %>
     <%= submit_tag 'Cancel', type: :reset, class: 'btn btn-danger' %>
   </div>
 <% end %>
+</div>
 
-= simple_form_for :message, url: reply_conversation_path(conversation) do |f|
-  = f.input :subject
-  = f.input :body
-  .form-actions
-    = f.button :submit, class: 'btn-primary'
-    = submit_tag 'Cancel', type: :reset, class: 'btn btn-danger'
