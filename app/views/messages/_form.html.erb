@@ -1,13 +1,22 @@
+<div style="@include outer-container">
 <%= simple_form_for(@message) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :title %>
 	
-	<%= f.text_area :body, size: "60x12" %>
+	<%= f.text_area :body, size: "60x3" %>
   </div>
 
+<div id="contacts">
+	<%= f.association :contact %>
+	
+</div>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%#= f.button :submit %>
+    <%= f.button :submit, class: 'btn-primary' %>
+    <%= submit_tag 'Cancel', type: :reset, class: 'btn btn-danger' %>
   </div>
 <% end %>
+</div>
+

@@ -1,23 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-	<head>
-		<title>Welcome!</title>
-	</head>
-	<body>
-		<% if user_signed_in? %>
- 
-		  <%= link_to('Edit registration', edit_user_registration_path) %> | 
-		  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
- 
-		<% else %>
- 
-		  <%= link_to('Register', new_user_registration_path)  %> | 
-		  <%= link_to('Login', new_user_session_path)  %>  
- 
-		<% end %>
-		<p>Welcome to the flywheel</p>
-		
-		<p><a href="/backstage">Let's get to work</a></p>
-		<p><a href="/contacts">Contacts</a></p>
-	</body>
-</html>
+	<%= render partial: "refills/device" %>
+	
+	<p><%= link_to "Sign in", new_user_session_path %></p>
+	
+	<p><%= link_to "Contacts", contacts_path %></p>
+	<p><%= link_to "Send Text", new_message_path %></p>
+	<p><%= link_to "Add Contact", new_contact_path %></p>
+	<p></p>

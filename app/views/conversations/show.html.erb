@@ -1,0 +1,13 @@
+<ul>
+  <% conversation.receipts_for(current_user).each do |receipt| %>
+	<li>
+			    <%- message = receipt.message %>
+		    <h3><%= message.subject %></h3>
+		    <p><%= message.body %></p>
+	
+	</li>	
+  <% end %>
+</ul>
+<%#= render 'messages/form', conversation: conversation %>
+
+<%= link_to 'Start Conversation', :new_conversation %>

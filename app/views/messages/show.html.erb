@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Belongs to:</strong>
-  <%= @message.belongs_to %>
+  <strong>Sent to:</strong>
+  <%= @message.contact.name %>
 </p>
 
 <%= link_to 'Edit', edit_message_path(@message) %> |

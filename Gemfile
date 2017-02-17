@@ -58,8 +58,8 @@ group :staging, :production do
   gem "rack-timeout"
 end
 
-gem 'bourbon', '~> 5.0.0.beta.7'
-gem 'neat', '~> 2.0.0.beta.1'
+gem 'bourbon', '5.0.0.beta.6'
+gem 'neat', '~> 1.8.0'
 gem 'refills', group: [:development, :test]
 
 ## app-specific gems
@@ -73,3 +73,15 @@ gem 'paper_trail', '~> 6.0', '>= 6.0.2'
 gem 'devise', '~> 4.2'
 # authorization
 gem 'cancancan', '1.12'
+
+# mailing messages
+gem 'signet', '~> 0.7.3'
+
+# connect with gmail as a webservice
+gem 'json', '~> 2.0', '>= 2.0.3'
+# gem 'google-api-client', '~> 0.9.26'#, require: 'google/api_client'
+gem 'omniauth', '~> 1.4'
+# gem 'omniauth-google-oauth2', '~> 0.4.1'
+gem 'twilio-ruby', '~> 4.13'
+# message tracking engine
+gem 'mailboxer', '~> 0.14.0'

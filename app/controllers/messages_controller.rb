@@ -1,18 +1,21 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action       :authenticate_user!
 
   # GET /messages
   def index
-    @messages = Message.all
+    @messages = current_user.messages.all
+    @contacts = current_user.contacts.all
   end
 
   # GET /messages/1
   def show
+    @contact = @message.contact
   end
 
   # GET /messages/new
   def new
-    @message = Message.new
+    @message = current_user.messages.new
   end
 
   # GET /messages/1/edit
@@ -21,9 +24,18 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = Message.new(message_params)
+    @message = current_user.messages.new(message_params)
 
+    contact = Contact.find(message_params["contact_id"])
+    phone_number = contact.primary_phone
+    
     if @message.save
+      contact = Contact.find(message_params["contact_id"].to_i)
+      phone_number = contact.primary_phone
+      sent_message = Courier.new.send_text_message(
+          body: "#{message_params['body']} -- EVO Agent",
+          to: phone_number
+          )
       redirect_to @message, notice: 'Message was successfully created.'
     else
       render :new
@@ -48,11 +60,13 @@ class MessagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
-      @message = Message.find(params[:id])
+      @message = current_user.messages.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def message_params
-      params.require(:message).permit(:title, :body, :belongs_to)
+      params.require(:message).permit(:title, 
+          :body, 
+          :contact_id)
     end
 end

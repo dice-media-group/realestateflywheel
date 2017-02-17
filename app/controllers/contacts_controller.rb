@@ -10,6 +10,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1
   def show
+    # @messages = @contact.messages.all
   end
 
   # GET /contacts/new
@@ -50,7 +51,8 @@ class ContactsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
-      @contact = current_user.contacts.find(params[:id])
+      @contact = Contact.find(params[:id])
+      
     end
 
     # Only allow a trusted parameter "white list" through.
