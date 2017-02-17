@@ -3,17 +3,16 @@
   $action-color: #477DCA !default;
   $medium-screen: 40em !default;
   $large-screen: 53.75em !default;
-  $main-content-background: desaturate(darken($action-color, 20%), 30%);
-  $main-content-color: white;
-  $main-content-link-color: transparentize($main-content-color, 0.6);
-  $main-content-disclaimer-color: transparentize($main-content-color, 0.6);
+  $main-content-color: black;
+  $main-content-link-color: blue;
+  $main-content-disclaimer-color: blue;
 
   padding: ($base-spacing * 2) $gutter;
   width: 100%;
 
   .main-content-logo {
     margin-bottom: 2em;
-    text-align: center;
+    text-align: left;
 
     img {
       height: 3em;
@@ -23,7 +22,7 @@
   .main-content-links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     margin-bottom: $base-spacing;
   }
 
@@ -37,7 +36,7 @@
   li {
     line-height: 1.5em;
     list-style: none;
-    text-align: center;
+    text-align: left;
   }
 
   li a {
@@ -57,17 +56,17 @@
   }
 
   hr {
-    border: 1px solid transparentize($main-content-disclaimer-color, 0.3);
+    border: 1px solid;
     margin: 0 auto $base-spacing;
     width: 12em;
   }
 
   p {
-    color: $main-content-disclaimer-color;
+    color: $main-content-color;
     font-size: 0.9em;
     line-height: 1.5em;
     margin: auto;
     max-width: 35em;
-    text-align: center;
+    text-align: left;
   }
 }
