@@ -18,9 +18,12 @@
   <%= render "flashes" -%>
   <%#= render "/shared/navigation" %>
   <%= render 'refills/centered_navigation' %>
-<p>&nbsp;</p> 	
-	 
-  <%= yield %>
+<p>&nbsp;</p> 
+	
+<div class="main-content">
+  <%= yield %>	
+</div>	 
+
 <p>&nbsp;</p> 	
   <%= render 'refills/footer' %>
 
