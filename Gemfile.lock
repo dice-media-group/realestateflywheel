@@ -362,6 +362,7 @@ DEPENDENCIES
   high_voltage
   honeybadger
   jquery-rails
+  jquery-ui-rails (~> 5.0)
   json (~> 2.0, >= 2.0.3)
   launchy
   listen

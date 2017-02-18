@@ -1,22 +1,32 @@
-<div style="@include outer-container">
-<%= simple_form_for(@message) do |f| %>
-  <%= f.error_notification %>
+<div class="messages ">
+	<div style="@include outer-container">
+	<%= simple_form_for(@message) do |f| %>
+	  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
+	  <div class="form-inputs">
+		<%= f.input :title %>
+		<div class="field">
+		  <%= f.label :message_script_id %><br />
+		  <%#= f.collection_select :message_script_id, MessageScript.order(:title), :id, :title, include_blank: true %>
+		  <%= f.text_field :message_script_title, data: { autocomplete_source: message_scripts_path} %>
+		  
+		</div>
+
+		<div class="field" id="contacts">
+			<%= f.association :contact %>
 	
-	<%= f.text_area :body, size: "60x3" %>
-  </div>
-
-<div id="contacts">
-	<%= f.association :contact %>
+		</div>
 	
-</div>
-  <div class="form-actions">
-    <%#= f.button :submit %>
-    <%= f.button :submit, class: 'btn-primary' %>
-    <%= submit_tag 'Cancel', type: :reset, class: 'btn btn-danger' %>
-  </div>
-<% end %>
-</div>
+		<%= f.text_area :body, size: "60x3" %>
+	  </div>
 
+
+
+	  <div class="form-actions">
+	    <%#= f.button :submit %>
+	    <%= f.button :submit, class: 'btn-primary' %>
+	    <%= submit_tag 'Cancel', type: :reset, class: 'btn btn-danger' %>
+	  </div>
+	<% end %>
+	</div>
+</div>
