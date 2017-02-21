@@ -85,3 +85,5 @@ gem 'omniauth', '~> 1.4'
 gem 'twilio-ruby', '~> 4.13'
 # message tracking engine
 gem 'mailboxer', '~> 0.14.0'
+# autocomplete and other js goodies
+gem 'jquery-ui-rails', '~> 5.0'
