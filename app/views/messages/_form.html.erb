@@ -12,13 +12,13 @@
 		  
 		</div>
 
+        <div class="field" id="contacts">
+			<%= f.association :contact %>
+		</div>
 	
 		<%= f.text_area :body, size: "60x3" %>
 	  </div>
 
-		<div class="field" id="contacts">
-			<%= f.association :contact %>
-		</div>
 
 
 	  <div class="form-actions">
