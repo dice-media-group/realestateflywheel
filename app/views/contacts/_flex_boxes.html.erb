@@ -1,0 +1,21 @@
+<div class="flex-boxes">
+  <div class="flex-box flex-box-big">
+    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
+    <h1 class="flex-title"><%= link_to @contact.name, edit_contact_path(@contact) %></h1>
+
+
+<p>
+  <strong>Primary Phone:</strong>
+  <%= @contact.primary_phone %>
+</p>
+<p>
+  <strong>Primary Phone Kind:</strong>
+  <%= @contact.primary_phone_kind %>
+</p>
+</div>
+  <div class="flex-box flex-box-big">
+    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
+    <h1 class="flex-title">Milestones (<%= link_to "+", new_contact_milestone_path(@contact) %>) </h1>
+	<%= render "milestones_table" %>
+
+  </div>

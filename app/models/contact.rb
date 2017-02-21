@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
   has_many    :messages
+  has_many    :milestones
   has_many    :users, through: :messages
   # acts_as_messageable
   

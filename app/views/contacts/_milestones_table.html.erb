@@ -1,0 +1,21 @@
+<table class="table-minimal">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+	  <% @contact.milestones.each do |milestone| %>
+	    <tr>
+	      <td><%= milestone.date %></td>
+	      <td><%= milestone.description %></td>
+	      <td><%= link_to "Edit", edit_milestone_path(milestone) %>
+			  <%= link_to 'Destroy', milestone, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+		  </td>
+	    </tr>
+	  <% end %>
+  </tbody>
+</table>
