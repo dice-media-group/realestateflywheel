@@ -4,7 +4,18 @@ class MessageScriptsController < ApplicationController
 
   # GET /message_scripts
   def index
-    @message_scripts = current_user.message_scripts.all
+    # @message_scripts = MessageScript.order(:title).where("title like ?", "%#{params[:term]}%")
+    @message_scripts = MessageScript.order(:title)
+      .where("lower(title) like lower(?)", "%#{params[:term]}%")
+      .select(:id, :title, :body)
+
+    render json: @message_scripts.map(&:body)
+    # render json:    @message_scripts
+    # respond_to do |format|
+    #   format.html { render html: @message_scripts }
+    #   format.json { render json: @message_scripts }
+    # end
+    
   end
 
   # GET /message_scripts/1
@@ -13,7 +24,7 @@ class MessageScriptsController < ApplicationController
 
   # GET /message_scripts/new
   def new
-    @message_script = current_user.message_scripts.new
+    @message_script = MessageScript.new
   end
 
   # GET /message_scripts/1/edit
@@ -22,7 +33,7 @@ class MessageScriptsController < ApplicationController
 
   # POST /message_scripts
   def create
-    @message_script = current_user.message_scripts.new(message_script_params)
+    @message_script = MessageScript.new(message_script_params)
 
     if @message_script.save
       redirect_to @message_script, notice: 'Message script was successfully created.'
@@ -45,11 +56,11 @@ class MessageScriptsController < ApplicationController
     @message_script.destroy
     redirect_to message_scripts_url, notice: 'Message script was successfully destroyed.'
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message_script
-      @message_script = current_user.message_scripts.find(params[:id])
+      @message_script = MessageScript.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
