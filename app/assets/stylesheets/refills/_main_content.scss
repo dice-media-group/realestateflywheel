@@ -1,4 +1,6 @@
 .main-content {
+    @include row();
+	
   $base-spacing: 1.5em !default;
   $action-color: #477DCA !default;
   $medium-screen: 40em !default;

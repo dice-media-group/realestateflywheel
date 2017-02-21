@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :milestone do
+    contact nil
+    date "2017-02-20"
+    description "MyText"
+  end
   factory :message do
     title "MyString"
     body "MyText"
