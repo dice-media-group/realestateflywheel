@@ -4,22 +4,21 @@
 	  <%= f.error_notification %>
 
 	  <div class="form-inputs">
-		<%= f.input :title %>
+		<%#= f.input :title %>
 		<div class="field">
-		  <%= f.label :message_script_id %><br />
-		  <%#= f.collection_select :message_script_id, MessageScript.order(:title), :id, :title, include_blank: true %>
-		  <%= f.text_field :message_script_title, data: { autocomplete_source: message_scripts_path} %>
+		  <%#= f.label :message_script_id %><br />
+		  <label>Prewritten message script (search)</label>
+		  <%= f.text_field :message_script_body, data: { autocomplete_source: message_scripts_path} %>
 		  
 		</div>
 
-		<div class="field" id="contacts">
-			<%= f.association :contact %>
-	
-		</div>
 	
 		<%= f.text_area :body, size: "60x3" %>
 	  </div>
 
+		<div class="field" id="contacts">
+			<%= f.association :contact %>
+		</div>
 
 
 	  <div class="form-actions">

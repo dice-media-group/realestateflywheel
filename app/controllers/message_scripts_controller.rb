@@ -4,9 +4,18 @@ class MessageScriptsController < ApplicationController
 
   # GET /message_scripts
   def index
-    @message_scripts = MessageScript.all
-    @message_scripts = MessageScript.order(:title).where("title like ?", "%#{params[:term]}%")
-    render json: @message_scripts.map(&:title)
+    # @message_scripts = MessageScript.order(:title).where("title like ?", "%#{params[:term]}%")
+    @message_scripts = MessageScript.order(:title)
+      .where("lower(title) like lower(?)", "%#{params[:term]}%")
+      .select(:id, :title, :body)
+
+    render json: @message_scripts.map(&:body)
+    # render json:    @message_scripts
+    # respond_to do |format|
+    #   format.html { render html: @message_scripts }
+    #   format.json { render json: @message_scripts }
+    # end
+    
   end
 
   # GET /message_scripts/1
@@ -47,7 +56,7 @@ class MessageScriptsController < ApplicationController
     @message_script.destroy
     redirect_to message_scripts_url, notice: 'Message script was successfully destroyed.'
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message_script
