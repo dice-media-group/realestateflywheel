@@ -159,6 +159,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.6.1)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -352,6 +353,7 @@ DEPENDENCIES
   bundler-audit (>= 0.5.0)
   cancancan (= 1.12)
   capybara-webkit
+  carrierwave (~> 1.0)
   database_cleaner
   delayed_job_active_record
   devise (~> 4.2)
@@ -367,6 +369,7 @@ DEPENDENCIES
   launchy
   listen
   mailboxer (~> 0.14.0)
+  mini_magick (~> 4.6, >= 4.6.1)
   neat (~> 1.8.0)
   normalize-rails (~> 3.0.0)
   omniauth (~> 1.4)

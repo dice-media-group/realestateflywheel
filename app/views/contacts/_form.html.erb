@@ -1,4 +1,4 @@
-<%= simple_form_for(@contact) do |f| %>
+<%= simple_form_for @contact, html: { multipart: true }  do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -17,6 +17,9 @@
 	<%= f.input :primary_phone_kind, collection: [ "Mobile", "Home", "Work"] %>
   </div>
 
+  <div class="form-imputs">
+	  <%= f.file_field :image  %>
+  </div>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
