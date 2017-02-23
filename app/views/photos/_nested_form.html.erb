@@ -1,0 +1,11 @@
+<%= simple_form_for @contact do |f| %>
+	<%= f.error_notification %>
+  <%#= f.input :email %>
+  <%= f.simple_fields_for :photos, @contact.photos.build, :html => {:multipart => true} do |p|%>
+  	<%= p.input :image, label: "Image: "%><br />
+	<%= p.label :remote_image_url, "or image URL"%><br />
+	<%= p.text_field  :remote_image_url %>
+    <%= p.input :description, label: "Description: " %>
+  <% end %>
+  <%= f.button :submit, "Add Photo" %>
+<% end %>

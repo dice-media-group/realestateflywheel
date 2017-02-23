@@ -10,7 +10,9 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1
   def show
-    # @messages = @contact.messages.all
+    @milestones = @contact.milestones.all
+    @photos = @contact.photos.all
+    @messages = @contact.messages.all
   end
 
   # GET /contacts/new
@@ -74,6 +76,9 @@ class ContactsController < ApplicationController
             :addl_phone_one_kind,
             :addl_phone_two,
             :addl_phone_two_kind,
-            :lead_source)
+            :lead_source,
+            :image,
+            :photos_attributes => [:description, :image, :remote_image_url]
+        )
     end
 end

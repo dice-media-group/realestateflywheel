@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :milestones
   get 'conversations/index'
 
   get 'conversations/new'
@@ -26,6 +25,7 @@ Rails.application.routes.draw do
   resources :message_scripts
   resources :contacts do
     resources :milestones, shallow: true
+    resources :photos, shallow: true
   end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
