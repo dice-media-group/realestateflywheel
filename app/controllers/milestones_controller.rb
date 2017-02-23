@@ -34,8 +34,9 @@ class MilestonesController < ApplicationController
 
   # PATCH/PUT /milestones/1
   def update
+    @contact = @milestone.contact
     if @milestone.update(milestone_params)
-      redirect_to @milestone, notice: 'Milestone was successfully updated.'
+      redirect_to @contact, notice: 'Milestone was successfully updated.'
     else
       render :edit
     end
@@ -43,8 +44,9 @@ class MilestonesController < ApplicationController
 
   # DELETE /milestones/1
   def destroy
+    @contact = @milestone.contact
     @milestone.destroy
-    redirect_to milestones_url, notice: 'Milestone was successfully destroyed.'
+    redirect_to contact_url(@contact), notice: 'Milestone was successfully destroyed.'
   end
 
   private
