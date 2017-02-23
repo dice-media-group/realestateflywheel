@@ -1,0 +1,8 @@
+<%= simple_form_for @contact do |f| %>
+	<%= f.error_notification %>
+  <%#= f.input :email %>
+  <%= f.simple_fields_for :milestones, @contact.milestones.build do |p|%>
+    <%= p.input :description, label: "Description: " %>
+  <% end %>
+  <%= f.button :submit, "Add Milestone" %>
+<% end %>

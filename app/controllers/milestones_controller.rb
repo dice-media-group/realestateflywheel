@@ -12,7 +12,9 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/new
   def new
-    @milestone = Milestone.new
+    # @milestone = Milestone.new
+    @contact = Contact.find_by("id = ?",params[:contact_id])
+    @contact.milestones.build
   end
 
   # GET /milestones/1/edit

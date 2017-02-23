@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :photo do
+    image "MyString"
+    description "MyText"
+    contact nil
+  end
   factory :milestone do
     contact nil
     date "2017-02-20"
