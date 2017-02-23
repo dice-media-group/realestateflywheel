@@ -91,3 +91,6 @@ gem 'jquery-ui-rails', '~> 5.0'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.6', '>= 4.6.1'
 gem 'fog', '~> 1.38'
+
+# date picker https://github.com/webbushka/pickadate.js
+gem 'rails-assets-pickadate-sass', source: 'https://rails-assets.org'

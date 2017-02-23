@@ -2,6 +2,9 @@
 	<%= f.error_notification %>
   <%#= f.input :email %>
   <%= f.simple_fields_for :milestones, @contact.milestones.build do |p|%>
+  	<%= p.input :date, as: :date, start_year: Date.today.year,
+                                end_year: Date.today.year - 20,
+                                order: [:month, :day, :year] %>
     <%= p.input :description, label: "Description: " %>
   <% end %>
   <%= f.button :submit, "Add Milestone" %>

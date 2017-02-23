@@ -78,6 +78,7 @@ class ContactsController < ApplicationController
             :addl_phone_two_kind,
             :lead_source,
             :image,
+            :milestones_attributes => [:date, :description],
             :photos_attributes => [:description, :image, :remote_image_url]
         )
     end
