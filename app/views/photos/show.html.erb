@@ -2,7 +2,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @photo.image %>
+  <%= image_tag(@photo.image.url(:thumb).to_s) %>
 </p>
 
 <p>
@@ -12,8 +12,8 @@
 
 <p>
   <strong>Contact:</strong>
-  <%= @photo.contact %>
+  <%= @photo.contact.name %>
 </p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<%= link_to 'Back', contact_path(@photo.contact) %>

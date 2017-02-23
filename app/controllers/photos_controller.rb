@@ -50,8 +50,9 @@ class PhotosController < ApplicationController
 
   # DELETE /photos/1
   def destroy
+    @contact = @photo.contact
     @photo.destroy
-    redirect_to photos_url, notice: 'Photo was successfully destroyed.'
+    redirect_to @contact, notice: 'Photo was successfully destroyed.'
   end
 
   private
