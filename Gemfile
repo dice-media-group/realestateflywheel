@@ -89,5 +89,5 @@ gem 'mailboxer', '~> 0.14.0'
 gem 'jquery-ui-rails', '~> 5.0'
 # file uploading
 gem 'carrierwave', '~> 1.0'
-# gem 'rmagick', '~> 2.16'
 gem 'mini_magick', '~> 4.6', '>= 4.6.1'
+gem 'fog', '~> 1.38'
