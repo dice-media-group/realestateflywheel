@@ -1,0 +1,2 @@
+class RosterContactsController < ApplicationController
+end

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :message_scripts,  :dependent => :destroy
   has_many :contacts,         :dependent => :destroy
   has_many :messages
+  has_many :rosters,          :dependent => :destroy
 
 
   ## does hmt fit this when we want the dependent attribute?
