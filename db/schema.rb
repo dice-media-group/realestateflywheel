@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222010117) do
+ActiveRecord::Schema.define(version: 20170224174048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,23 @@ ActiveRecord::Schema.define(version: 20170222010117) do
     t.index ["contact_id"], name: "index_photos_on_contact_id", using: :btree
   end
 
+  create_table "roster_contacts", force: :cascade do |t|
+    t.integer  "contact_id"
+    t.integer  "roster_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_roster_contacts_on_contact_id", using: :btree
+    t.index ["roster_id"], name: "index_roster_contacts_on_roster_id", using: :btree
+  end
+
+  create_table "rosters", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rosters_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -199,4 +216,7 @@ ActiveRecord::Schema.define(version: 20170222010117) do
   add_foreign_key "messages", "users"
   add_foreign_key "milestones", "contacts"
   add_foreign_key "photos", "contacts"
+  add_foreign_key "roster_contacts", "contacts"
+  add_foreign_key "roster_contacts", "rosters"
+  add_foreign_key "rosters", "users"
 end

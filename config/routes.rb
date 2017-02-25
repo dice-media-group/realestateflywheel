@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :rosters, :roster_contacts
+    
   get 'conversations/index'
 
   get 'conversations/new'
@@ -21,8 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages
-  resources :message_scripts
+  resources :messages, :message_scripts
+
   resources :contacts do
     resources :milestones, shallow: true
     resources :photos, shallow: true

@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :roster_contact do
+    contact nil
+    roster nil
+  end
+
+  factory :roster do
+    title "MyString"
+    user nil
+  end
   factory :photo do
     image "MyString"
     description "MyText"

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= @roster.title %> (<%= link_to "Add Contact", edit_roster_path(@roster) %>)</strong>
+  
+</p>
+
+<%= link_to 'Edit', edit_roster_path(@roster) %> |
+<%= link_to 'Back', rosters_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roster.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%#= link_to 'Show', contact %></td>
+        <td><%#= link_to 'Edit', edit_roster_path(roster) %></td>
+        <td><%#= link_to 'Destroy', roster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
