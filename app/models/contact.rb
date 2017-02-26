@@ -1,4 +1,8 @@
 class Contact < ApplicationRecord
+  validates_presence_of :primary_phone, :on => :create, :message => "can't be blank"
+  validates_presence_of :primary_phone_kind, :on => :create, :message => "can't be blank"
+  validates_presence_of :primary_phone, :on => :update, :message => "can't be blank"
+  validates_presence_of :primary_phone_kind, :on => :update, :message => "can't be blank"
   has_many    :messages
   has_many    :milestones
   has_many    :photos

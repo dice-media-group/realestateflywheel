@@ -1,0 +1,21 @@
+<h1>Broadcasts to Rosters</h1>
+
+<table>
+  <thead>
+    <tr>
+	  <th>Roster</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @broadcasts.each do |broadcast| %>
+      <tr>
+        <td> <%= link_to broadcast.roster.title, roster_path(broadcast.roster) %></td>
+        <td> <%= link_to broadcast.message_title, broadcast_path(broadcast) %></td>
+        <td><%= broadcast.message_body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -24,6 +24,7 @@ class Courier
     )
   end
   
+  
   def sanitize(number)
     "+1" + number.gsub(/$1|\+|\s|\(|\)|\-|\./, '')
   end

@@ -4,8 +4,9 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = current_user.messages.all
-    @contacts = current_user.contacts.all
+    @messages   = current_user.messages.all
+    @contacts   = current_user.contacts.all
+    @broadcasts = current_user.broadcasts.all
   end
 
   # GET /messages/1
@@ -15,7 +16,9 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @message = current_user.messages.new
+    @message    = current_user.messages.new
+    @broadcast  = current_user.broadcasts.new
+    
   end
 
   # GET /messages/1/edit

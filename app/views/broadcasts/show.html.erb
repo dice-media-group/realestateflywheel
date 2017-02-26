@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @broadcast.user.email %>
+</p>
+
+<p>
+  <strong>Roster:</strong>
+  <%= @broadcast.roster.title %>
+</p>
+
+<p>
+  <strong>Message body:</strong>
+  <%= @broadcast.message_body %>
+</p>
+
+<p>
+  <strong>Message title:</strong>
+  <%= @broadcast.message_title %>
+</p>
+
+<p>
+  <strong>Message script:</strong>
+  <%= @broadcast.message_script.title %>
+</p>
+
+<%= link_to 'Back to Rosters', rosters_path %>

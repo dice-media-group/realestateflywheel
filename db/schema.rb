@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224174048) do
+ActiveRecord::Schema.define(version: 20170226012234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "broadcasts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "roster_id"
+    t.text     "message_body"
+    t.string   "message_title"
+    t.integer  "message_script_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["message_script_id"], name: "index_broadcasts_on_message_script_id", using: :btree
+    t.index ["roster_id"], name: "index_broadcasts_on_roster_id", using: :btree
+    t.index ["user_id"], name: "index_broadcasts_on_user_id", using: :btree
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string   "first_name"
@@ -207,6 +220,9 @@ ActiveRecord::Schema.define(version: 20170224174048) do
     t.index ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
   end
 
+  add_foreign_key "broadcasts", "message_scripts"
+  add_foreign_key "broadcasts", "rosters"
+  add_foreign_key "broadcasts", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

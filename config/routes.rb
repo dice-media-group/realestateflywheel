@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :broadcasts, only: [:index, :show, :new, :create]
+  
+    
   resources :messages, :message_scripts
 
   resources :contacts do
