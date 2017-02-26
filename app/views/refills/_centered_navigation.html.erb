@@ -15,7 +15,7 @@
         </li>
         <li class="nav-link"><%= link_to "Add Contact", new_contact_path %></li>
         <li class="nav-link"><%= link_to "Contacts", contacts_path %></li>
-        <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">More</a>
+        <!-- <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">More</a>
           <ul class="submenu">
             <li><a href="javascript:void(0)">Submenu Item</a></li>
             <li><a href="javascript:void(0)">Another Item</a></li>
@@ -32,7 +32,7 @@
               </ul>
             </li>
           </ul>
-        </li>
+        </li> -->
         <!-- <li class="nav-link"><a href="javascript:void(0)">Sign up</a></li> -->
 		<% if current_user %>
 			<li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>		
