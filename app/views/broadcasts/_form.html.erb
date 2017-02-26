@@ -1,0 +1,14 @@
+<%= simple_form_for(@broadcast) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :roster %>
+    <%= f.association :message_script %>
+    <%= f.input :message_title %>
+    <%= f.input :message_body %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

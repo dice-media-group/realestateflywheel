@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :broadcast do
+    user nil
+    roster nil
+    message_body "MyText"
+    message_title "MyString"
+    message_script nil
+  end
   factory :roster_contact do
     contact nil
     roster nil
