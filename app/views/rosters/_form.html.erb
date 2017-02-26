@@ -3,29 +3,16 @@
   <%= f.input :title, :hint => '(The title of your contact roster)' %>
   
   <div class="field">
-	  <%= f.label :contact_ids, "Contacts" %><br />
-	  <%= f.association :contact_ids, 
-	  		collection: Contact.order(:first_name),
-	        include_blank: true,
-	        input_html: { class: 'chosen-select' }, 
-			prompt: 'Select Contact' %>  	
-  </div>
   <%#= render "accordion_tabs_minimal.html.erb"%>
   <ul class="accordion-tabs-minimal">
     <li class="tab-header-and-content">
       <a href="#" class="tab-link is-active">Contacts</a>
-      <!-- <div class="tab-content">
-		  <%#= f.simple_fields_for :roster_contacts do |roster_contact| %>
-          	<%#= render 'roster_contact_fields', :f => roster_contact %>
-		  <%# end %>
-	      <%#= link_to_add_association 'add a contact', f, :roster_contacts %>
-      </div> -->
-
-		  <%#= f.association :contact, 
-		  		collection: Contact.order(:first_name),
-                include_blank: true,
-                input_html: { class: 'chosen-select' }, 
-				prompt: 'Select Contact' %>
+      <div class="tab-content">
+		  <%= f.simple_fields_for :roster_contacts do |roster_contact| %>
+          	<%= render 'roster_contact_fields', :f => roster_contact %>
+		  <% end %>
+	      <%= link_to_add_association 'add a contact', f, :roster_contacts %>
+      </div>
 		  
     </li>
 
