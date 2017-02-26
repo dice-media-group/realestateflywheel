@@ -60,7 +60,7 @@ class RostersController < ApplicationController
     def roster_params
       params.require(:roster).permit(:title,
          :user_id,
-         :listings_attributes => [:contact_id],
+         :contact_ids,
          roster_contacts_attributes: [:id, :_destroy, :contact_id, contact_attributes: [:id, :_destroy, :first_name, :last_name]]
          )
     end

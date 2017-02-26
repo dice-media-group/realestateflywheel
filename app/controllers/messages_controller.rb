@@ -27,16 +27,21 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = current_user.messages.new(message_params)
-
+    @message          = current_user.messages.new(message_params)
+    if message_params["message_script_id"].to_i > 0
+      message_script    = MessageScript.find(message_params["message_script_id"])
+      @message.title    = message_script.title
+      @message.body     = message_script.body
+    end
+    
     contact = Contact.find(message_params["contact_id"])
     phone_number = contact.primary_phone
     
     if @message.save
-      contact = Contact.find(message_params["contact_id"].to_i)
+      contact = Contact.find(contact.id.to_i)
       phone_number = contact.primary_phone
       sent_message = Courier.new.send_text_message(
-          body: "#{message_params['body']} -- EVO Agent",
+          body: "#{@message.body} -- EVO Agent",
           to: phone_number
           )
       redirect_to @message, notice: 'Message was successfully created.'
@@ -71,6 +76,7 @@ class MessagesController < ApplicationController
       params.require(:message).permit(:title, 
           :body, 
           :contact_id,
+          :message_script_id,
           :message_script_title,
           :message_script_body)
     end

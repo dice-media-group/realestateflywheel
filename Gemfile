@@ -97,3 +97,5 @@ gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 # date picker https://github.com/webbushka/pickadate.js
 gem 'rails-assets-pickadate-sass', source: 'https://rails-assets.org'
+# better UX with a select and jQuery
+gem 'chosen-rails', '~> 1.5', '>= 1.5.2'

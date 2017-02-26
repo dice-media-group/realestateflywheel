@@ -5,18 +5,29 @@
 
 	  <div class="form-inputs">
 		<%#= f.input :title %>
+        <div class="field" id="contacts">
+			<%= f.association :contact, 
+		  		collection: Contact.order(:first_name),
+                include_blank: true,
+                input_html: { class: 'chosen-select' }, 
+				prompt: 'Select Contact' %>
+		</div>
 		<div class="field">
 		  <%#= f.label :message_script_id %><br />
-		  <label>Prewritten message script (search)</label>
-		  <%= f.text_field :message_script_body, data: { autocomplete_source: message_scripts_path} %>
+		  <%= f.association :message_script, 
+		  		collection: MessageScript.order(:title),
+                include_blank: true,
+                input_html: { class: 'chosen-select' }, 
+				prompt: 'Select Message Script',
+				label: 'Choose a Pre-Written Script' %>
 		  
 		</div>
 
-        <div class="field" id="contacts">
-			<%= f.association :contact %>
+	    <div class="field" id="body">
+  		  <label>-- OR -- Write in an original Message Below</label>
+			
+			<%= f.text_area :body, size: "60x3" %>
 		</div>
-	
-		<%= f.text_area :body, size: "60x3" %>
 	  </div>
 
 

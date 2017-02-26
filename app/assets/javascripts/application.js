@@ -14,6 +14,8 @@
 //= require jquery-ui   
 //= require jquery_ujs
 //= require pickadate-sass
+//= require chosen-jquery
+//= require messages
 //= require cocoon
 		
 //= require_tree .
