@@ -14,12 +14,13 @@
   </div>
 
   <div class="form-inputs">
-	<%= f.input :primary_phone_kind, collection: [ "Mobile", "Home", "Work"] %>
+	<%= f.input :primary_phone_kind, 
+			collection: [ "Mobile", "Home", "Work"], 
+	        include_blank: true,
+	        input_html: { class: 'chosen-select' }, 
+			prompt: 'Select type of Phone' %>
   </div>
 
-  <div class="form-imputs">
-	  <%= f.file_field :image  %>
-  </div>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

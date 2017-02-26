@@ -18,9 +18,12 @@
 @import "refills/main_content";
 @import "refills/accordion-tabs-minimal";
 
-//controllers
-@import "messages";
 
 // custom:
+@import "chosen/chosen-min";
+@import "resources/rosters.css.scss";
+@import "resources/contacts.css.scss";
+@import "resources/messages.css.scss";
+
 //@import "mobile_example";
 //@import "column_layout"

@@ -2,8 +2,21 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :roster %>
-    <%= f.association :message_script %>
+    <%= f.association :roster, 
+	collection: Roster.order(:title),
+      include_blank: true,
+      input_html: { class: 'chosen-select' }, 
+	prompt: 'Select a Roster',
+	label: 'Roster' %>
+
+    <%#= f.association :message_script %>
+  	<%= f.association :message_script, 
+  		collection: MessageScript.order(:title),
+          include_blank: true,
+          input_html: { class: 'chosen-select' }, 
+		prompt: 'Select Message Script',
+		label: 'Choose a Pre-Written Script' %>
+	<label>-- OR write your custom message--</label>
     <%= f.input :message_title %>
     <%= f.input :message_body %>
   </div>

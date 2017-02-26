@@ -22,7 +22,7 @@
 
 <p>
   <strong>Message script:</strong>
-  <%= @broadcast.message_script.title %>
+  <%= @broadcast.message_script.title if @broadcast.message_script %>
 </p>
 
 <%= link_to 'Back to Rosters', rosters_path %>
