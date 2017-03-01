@@ -34,16 +34,10 @@ class MessagesController < ApplicationController
       @message.body     = message_script.body
     end
     
-    contact = Contact.find(message_params["contact_id"])
-    phone_number = contact.primary_phone
-    
+
     if @message.save
-      contact = Contact.find(contact.id.to_i)
-      phone_number = contact.primary_phone
-      sent_message = Courier.new.send_text_message(
-          body: "#{@message.body} -- EVO Agent",
-          to: phone_number
-          )
+      ContactCourierJob.perform_now(params: @message, phone_number: @message.contact.primary_phone)
+
       redirect_to @message, notice: 'Message was successfully created.'
     else
       render :new
@@ -65,6 +59,9 @@ class MessagesController < ApplicationController
     redirect_to messages_url, notice: 'Message was successfully destroyed.'
   end
 
+  def sanitize_number(number)
+    "+18014994594"
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
@@ -80,4 +77,5 @@ class MessagesController < ApplicationController
           :message_script_title,
           :message_script_body)
     end
+    
 end
