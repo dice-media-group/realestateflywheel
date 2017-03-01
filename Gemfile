@@ -99,3 +99,6 @@ gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'rails-assets-pickadate-sass', source: 'https://rails-assets.org'
 # better UX with a select and jQuery
 gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
+# Implement texter classes for sending SMS messages in similar way to how e-mails are sent with
+# ActionMailer-based mailers.
+gem 'textris', '~> 0.4.4'
