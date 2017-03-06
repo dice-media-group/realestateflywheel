@@ -11,8 +11,8 @@ class ContactTexter < Textris::Base
     text :to => Courier.new.sanitize(phone_number)
   end
   
-  def immediate_release(params:, phone_number:)
-    @params = params
+  def immediate_release(message:, phone_number:)
+    @message   = message
     text :to => Courier.new.sanitize(phone_number)
   end
 end

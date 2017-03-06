@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
     
 
     if @message.save
-      ContactCourierJob.perform_now(params: @message, phone_number: @message.contact.primary_phone)
+      Message.dispatch_message_at_the_scheduled_time(@message)
 
       redirect_to @message, notice: 'Message was successfully created.'
     else
@@ -75,7 +75,8 @@ class MessagesController < ApplicationController
           :contact_id,
           :message_script_id,
           :message_script_title,
-          :message_script_body)
+          :message_script_body,
+          :dispatched_at)
     end
     
 end

@@ -22,6 +22,13 @@
 				label: 'Choose a Pre-Written Script' %>
 		  
 		</div>
+		<div class="field">
+		<%= f.input :dispatched_at, 
+					min: Time.zone.today,
+					start_year: Time.zone.now.year, 
+					ampm: true, 
+					class: "form-control"  %>
+		</div>
 
 	    <div class="field" id="body">
   		  <label>-- OR -- Write in an original Message Below</label>

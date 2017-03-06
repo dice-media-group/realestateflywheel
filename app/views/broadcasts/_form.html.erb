@@ -18,10 +18,21 @@
 		label: 'Choose a Pre-Written Script' %>
 	<label>-- OR write your custom message--</label>
     <%= f.input :message_title %>
+	
+		<%= f.input :dispatched_at, 
+					min: Time.zone.today,
+					start_year: Time.zone.now.year, 
+					ampm: true, 
+					class: "form-control"  %>
+		</div>
+	
     <%= f.input :message_body %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+  
+  <input id="demo" placeholder="Please Select..." />
 <% end %>
+
