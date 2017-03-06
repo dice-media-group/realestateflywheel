@@ -25,10 +25,11 @@ class BroadcastsController < ApplicationController
     @broadcast = current_user.broadcasts.new(broadcast_params)
 
     if @broadcast.save
-      broadcast_sent_forth  = Message.new.send_message_to_roster(roster_id: (broadcast_params["roster_id"]).to_i,
-          body: (broadcast_params["message_body"]).to_s,
-          user_name: "#{current_user.first_name} #{current_user.last_name}"
-          )
+      # broadcast_sent_forth  = Message.new.send_message_to_roster(roster_id: (broadcast_params["roster_id"]).to_i,
+      #     body: (broadcast_params["message_body"]).to_s,
+      #     user_name: "#{current_user.first_name} #{current_user.last_name}"
+      #     )
+          dispatched_broadcast = Broadcast.dispatch(@broadcast.id)
       redirect_to @broadcast, notice: 'Broadcast was successfully created.'
     else
       render :new
@@ -58,6 +59,12 @@ class BroadcastsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def broadcast_params
-      params.require(:broadcast).permit(:user_id, :roster_id, :message_body, :message_title, :message_script_id)
+      params.require(:broadcast).permit(:user_id, 
+        :roster_id, 
+        :message_body, 
+        :message_title, 
+        :message_script_id,
+        :dispatched_at
+        )
     end
 end

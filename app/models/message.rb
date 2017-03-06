@@ -20,13 +20,21 @@ class Message < ApplicationRecord
     
     contacts = Roster.find(roster_id).contacts.select(:id, :primary_phone)
     contacts.each do |contact|
-      Message.create!(body: message_body, contact_id: contact.id, title: message_body.truncate(20))
-      Courier.new.send_text_message(to: contact.primary_phone, body: message_body)
-      sleep 1
+      message = Message.create!(body: message_body, contact_id: contact.id, title: message_body.truncate(20))
+      # self.dispatch_message_at_the_scheduled_time(message)
+    end
+  end
+  
+  def self.dispatch_message_at_the_scheduled_time(message)
+    if message.created_at >= message.dispatched_at
+      ContactTexter.immediate_release(message: message, phone_number: message.contact.primary_phone)
+        .deliver_later        
+    else
+      ContactTexter.immediate_release(message: message, phone_number: message.contact.primary_phone)
+        .deliver_later(:wait_until => message.dispatched_at)
     end
     
   end
-  
   #broadcast methods
   # This API routine will attempt to create new messages 
   # from multiple JSON records 
