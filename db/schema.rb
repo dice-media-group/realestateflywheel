@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306004442) do
+ActiveRecord::Schema.define(version: 20170306212110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170306004442) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.datetime "dispatch_datetime"
+    t.datetime "dispatched_at"
     t.index ["message_script_id"], name: "index_broadcasts_on_message_script_id", using: :btree
     t.index ["roster_id"], name: "index_broadcasts_on_roster_id", using: :btree
     t.index ["user_id"], name: "index_broadcasts_on_user_id", using: :btree
