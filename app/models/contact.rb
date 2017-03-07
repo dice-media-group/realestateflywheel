@@ -15,11 +15,9 @@ class Contact < ApplicationRecord
   
   has_many    :users, through: :messages
   
-  # has_many    :listings
-  # has_many    :rosters, through: :listings
-  
   has_many :roster_contacts, inverse_of: :contact
-  has_many :rosters, through: :roster_contacts
+  has_many :rosters, through: :roster_contacts, :class_name => 'Roster'
+  accepts_nested_attributes_for :roster_contacts, :allow_destroy => true  
   # acts_as_messageable
 
   # mount_uploader :image, ImageUploader
