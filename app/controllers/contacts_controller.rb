@@ -78,7 +78,9 @@ class ContactsController < ApplicationController
             :addl_phone_two,
             :addl_phone_two_kind,
             :lead_source,
-            :image            
+            :image,
+            {milestones_attributes: [:id, :_destroy, :description, :date]},           
+            {photos_attributes: [:id, :_destroy, :description, :image, :remote_image_url]}           
             )
     end
 end
