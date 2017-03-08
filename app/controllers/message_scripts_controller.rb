@@ -9,17 +9,19 @@ class MessageScriptsController < ApplicationController
       .where("lower(title) like lower(?)", "%#{params[:term]}%")
       .select(:id, :title, :body)
 
-    render json: @message_scripts.map(&:body)
-    # render json:    @message_scripts
-    # respond_to do |format|
-    #   format.html { render html: @message_scripts }
-    #   format.json { render json: @message_scripts }
-    # end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  { render :json => @message_scripts }
+    end
     
   end
 
   # GET /message_scripts/1
   def show
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  { render :json => @message_script }
+    end
   end
 
   # GET /message_scripts/new
