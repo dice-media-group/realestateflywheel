@@ -80,3 +80,8 @@ select {
   margin-bottom: $small-spacing;
   width: 100%;
 }
+
+.field_with_errors {
+	color: red;
+}
+

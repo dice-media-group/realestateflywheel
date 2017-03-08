@@ -30,10 +30,9 @@
 					class: "form-control"  %>
 		</div>
 
-	    <div class="field" id="body">
-  		  <label>-- OR -- Write in an original Message Below</label>
-			
-			<%= f.text_area :body, size: "60x3" %>
+	    <div class="field">			
+			<%= f.input :body, as: :text, 
+			label: 'Message Body' %>
 		</div>
 	  </div>
 

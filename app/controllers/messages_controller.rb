@@ -28,11 +28,6 @@ class MessagesController < ApplicationController
   # POST /messages
   def create
     @message          = current_user.messages.new(message_params)
-    if message_params["message_script_id"].to_i > 0
-      message_script    = MessageScript.find(message_params["message_script_id"])
-      @message.title    = message_script.title
-      @message.body     = message_script.body
-    end
     
 
     if @message.save

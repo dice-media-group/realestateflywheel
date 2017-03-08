@@ -5,6 +5,12 @@ class BroadcastsController < ApplicationController
   # GET /broadcasts
   def index
     @broadcasts = Broadcast.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @broadcasts }
+      format.json  { render :json => @broadcasts.to_json }
+    end
+    
   end
 
   # GET /broadcasts/1

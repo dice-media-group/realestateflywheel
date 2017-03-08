@@ -5,6 +5,7 @@ class Message < ApplicationRecord
   
   # validates_presence_of :title
   validates_presence_of :body
+  validates_presence_of :body, :on => :create, :message => "can't be blank"
   validates_presence_of :contact
   
   def message_script_body
