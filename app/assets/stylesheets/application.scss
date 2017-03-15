@@ -23,6 +23,12 @@
 // better select pulldown
 @import "chosen/chosen-min";
 
+// svg and css social buttons like 'login with facebook'
+// http://www.mattboldt.com/demos/social-buttons/
+@import "social-buttons/base";
+@import "social-buttons/main";
+@import "social-buttons/sc-btn";
+
 @import "resources/rosters.css.scss";
 @import "resources/contacts.css.scss";
 @import "resources/messages.css.scss";

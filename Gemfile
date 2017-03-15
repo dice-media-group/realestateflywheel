@@ -71,6 +71,8 @@ gem 'rails_admin', '~> 1.1', '>= 1.1.1'
 gem 'paper_trail', '~> 6.0', '>= 6.0.2'
 # user model
 gem 'devise', '~> 4.2'
+gem 'omniauth-facebook', '~> 4.0'
+
 # authorization
 gem 'cancancan', '1.12'
 
