@@ -16,6 +16,7 @@
 //= require chosen-jquery
 //= require messages
 //= require cocoon
+//= require social-buttons
 		
 //= require_tree .
 
