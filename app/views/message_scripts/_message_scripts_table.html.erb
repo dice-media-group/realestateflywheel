@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @message_scripts.each do |message_script| %>
+      <tr>
+        <td><%= message_script.title %></td>
+        <td><%= message_script.body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
