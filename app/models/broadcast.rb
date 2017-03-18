@@ -49,7 +49,7 @@ class Broadcast < ApplicationRecord
   def self.set_what_and_when_of_message(broadcast)
     message_attributes = self.collect_broadcast_message_attributes(broadcast)
     script_id = message_attributes.message_script_id.to_i
-    if script_id > 0
+    if message_attributes.body.length < 2
       message_attributes.title  = broadcast.message_script.title
       message_attributes.body   = broadcast.message_script.body
     else
