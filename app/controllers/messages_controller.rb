@@ -21,6 +21,10 @@ class MessagesController < ApplicationController
   def new
     @message    = current_user.messages.new
     @broadcast  = current_user.broadcasts.new
+    @message_templates  = MessageTemplate.find_originals_and_owned_by_current_user(current_user.id)
+      .select(:id, :title, :body)
+      .order(:title)
+    
     
   end
 

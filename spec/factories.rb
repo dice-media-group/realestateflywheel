@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :message_template do
+    
+  end
   factory :broadcast do
     user nil
     roster nil

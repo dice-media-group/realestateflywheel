@@ -9,13 +9,14 @@
 	prompt: 'Select a Roster',
 	label: 'Roster' %>
 
-    <%#= f.association :message_script %>
-  	<%= f.association :message_script, 
-  		collection: MessageScript.order(:title),
-          include_blank: true,
-          input_html: { class: 'chosen-select' }, 
-		prompt: 'Select Message Script',
-		label: 'Choose a Pre-Written Script' %>
+	<div class="field">
+	  <%= f.input :message_script_id, 
+	  		collection: @message_templates,
+              include_blank: true,
+              input_html: { class: 'chosen-select' }, 
+			prompt: 'Select Message Script',
+			label: 'Choose a Pre-Written Script' %>
+	</div>
 	<label>-- OR write your custom message--</label>
     <%= f.input :message_title %>
 	
@@ -33,6 +34,5 @@
     <%= f.button :submit %>
   </div>
   
-  <input id="demo" placeholder="Please Select..." />
 <% end %>
 

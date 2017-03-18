@@ -13,9 +13,8 @@
 				prompt: 'Select Contact' %>
 		</div>
 		<div class="field">
-		  <%#= f.label :message_script_id %><br />
-		  <%= f.association :message_script, 
-		  		collection: MessageScript.order(:title),
+		  <%= f.input :message_script_id, 
+		  		collection: @message_templates,
                 include_blank: true,
                 input_html: { class: 'chosen-select' }, 
 				prompt: 'Select Message Script',

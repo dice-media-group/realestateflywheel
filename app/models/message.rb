@@ -2,6 +2,7 @@ class Message < ApplicationRecord
   belongs_to :contact
   belongs_to :user
   belongs_to :message_script
+  belongs_to :broadcast
   
   # validates_presence_of :title
   validates_presence_of :body
