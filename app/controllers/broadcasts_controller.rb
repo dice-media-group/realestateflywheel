@@ -20,6 +20,9 @@ class BroadcastsController < ApplicationController
   # GET /broadcasts/new
   def new
     @broadcast = current_user.broadcasts.new
+    @message_templates  = MessageTemplate
+      .find_originals_and_owned_by_current_user(current_user.id)
+      .order(:title)
   end
 
   # GET /broadcasts/1/edit

@@ -1,28 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>Message Scripts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @message_scripts.each do |message_script| %>
-      <tr>
-        <td><%= message_script.title %></td>
-        <td><%= message_script.body %></td>
-        <td><%= link_to 'Show', message_script %></td>
-        <td><%= link_to 'Edit', edit_message_script_path(message_script) %></td>
-        <td><%= link_to 'Destroy', message_script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<%= render "message_scripts_table" %>
 <br>
 
 <%= link_to 'New Message Script', new_message_script_path %>

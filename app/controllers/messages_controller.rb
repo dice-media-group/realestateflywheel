@@ -7,6 +7,9 @@ class MessagesController < ApplicationController
     @messages   = current_user.messages.all
     @contacts   = current_user.contacts.all
     @broadcasts = current_user.broadcasts.all
+    @message_scripts = MessageScript.order(:title)
+      .where("lower(title) like lower(?)", "%#{params[:term]}%")
+      .select(:id, :title, :body)
   end
 
   # GET /messages/1
@@ -18,6 +21,10 @@ class MessagesController < ApplicationController
   def new
     @message    = current_user.messages.new
     @broadcast  = current_user.broadcasts.new
+    @message_templates  = MessageTemplate.find_originals_and_owned_by_current_user(current_user.id)
+      .select(:id, :title, :body)
+      .order(:title)
+    
     
   end
 

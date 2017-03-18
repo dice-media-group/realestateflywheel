@@ -13,6 +13,7 @@
 @import "refills/icon-bullet-points";
 @import "refills/centered-navigation";
 @import "refills/footer";
+// @import "refills/modal";
 @import "refills/flex-boxes";
 @import "refills/tables-minimal";
 @import "refills/main_content";
@@ -25,13 +26,13 @@
 
 // svg and css social buttons like 'login with facebook'
 // http://www.mattboldt.com/demos/social-buttons/
-@import "social-buttons/base";
-@import "social-buttons/main";
 @import "social-buttons/sc-btn";
 
 @import "resources/rosters.css.scss";
 @import "resources/contacts.css.scss";
 @import "resources/messages.css.scss";
+
+//@import "form"
 
 //@import "mobile_example";
 //@import "column_layout"
