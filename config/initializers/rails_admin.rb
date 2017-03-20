@@ -3,13 +3,20 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  config.authenticate_with do
-    warden.authenticate! scope: :user
+  # config.authenticate_with do
+  #   warden.authenticate! scope: :user
+  # end
+  # config.current_user_method(&:current_user)
+
+  ## == HTTP Auth == 
+  config.authorize_with do
+    authenticate_or_request_with_http_basic('Site Message') do |username, password|
+      username == ENV['USERNAME'] && password == ENV['PASSWORD']
+    end
   end
-  config.current_user_method(&:current_user)
 
   ## == Cancan ==
-  config.authorize_with :cancan #TODO add cancancan to rails_admin config
+  # config.authorize_with :cancan #TODO add cancancan to rails_admin config
 
   ## == Pundit ==
   # config.authorize_with :pundit
