@@ -1,5 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+
+	<div class="centered-buttons">
+		<p><%= button_to "Add New", new_contact_path, method: "get", class: "add-contact button" %></p>
+		<p>&nbsp;</p>
+		<p><%= button_to "All Contacts", contacts_path, method: "get", class: "contacts button"  %></p>
+		<p>&nbsp;</p>
+		<p><%= button_to "Past Clients", new_contact_path, method: "get", class: "history button"  %></p>
+		<p>&nbsp;</p>
+		<p><%= button_to "Friends/Family", new_contact_path, method: "get", class: "heart button"  %></p>
+		<p>&nbsp;</p>
+		<p><%= button_to "Prospects", new_contact_path, method: "get", class: "prospect-contact button"  %></p>
+	</div>
+	
+
+
 <h1>Contacts</h1>
 <%= link_to 'Create Contact', new_contact_path %> | 
 <%= link_to 'Create Roster', new_roster_path %> | 

@@ -17,6 +17,7 @@
 //= require messages
 //= require cocoon
 //= require social-buttons
+//= require svg-buttons
 //= require update-message-body
 		
 //= require_tree .
