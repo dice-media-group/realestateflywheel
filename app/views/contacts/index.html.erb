@@ -1,3 +1,13 @@
+<h1 id="contacts">Contacts <%=  " - #{@tag_name}" if @tag_name.to_s.length > 0  %></h1>
+<style type="text/css" media="screen">
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
+</style>
 <p id="notice"><%= notice %></p>
 
 
@@ -6,25 +16,17 @@
 		<p>&nbsp;</p>
 		<p><%= button_to "All Contacts", contacts_path, method: "get", class: "contacts button"  %></p>
 		<p>&nbsp;</p>
-		<p><%= button_to "Past Clients", new_contact_path, method: "get", class: "history button"  %></p>
+	    <% current_user.contacts.tag_counts_on(:tags).each do |tag| %>
+			<%= button_to "#{tag.name}", tag_path(tag.name), method: "get", class: "button" %>
 		<p>&nbsp;</p>
-		<p><%= button_to "Friends/Family", new_contact_path, method: "get", class: "heart button"  %></p>
-		<p>&nbsp;</p>
-		<p><%= button_to "Prospects", new_contact_path, method: "get", class: "prospect-contact button"  %></p>
+		
+		<% end %>
 	</div>
-	
-
-
-<h1>Contacts</h1>
-<%= link_to 'Create Contact', new_contact_path %> | 
-<%= link_to 'Create Roster', new_roster_path %> | 
-<%= link_to "Rosters", rosters_path %>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th ></th>
     </tr>
   </thead>
 
@@ -32,8 +34,6 @@
     <% @contacts.each do |contact| %>
       <tr>
         <td><%= link_to "#{contact.first_name} #{contact.last_name}", contact %></td>
-        <td> <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</td>
       </tr>
     <% end %>
   </tbody>
