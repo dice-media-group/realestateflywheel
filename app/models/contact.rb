@@ -1,4 +1,6 @@
 class Contact < ApplicationRecord
+  acts_as_taggable
+  
   validates_presence_of :primary_phone, :on => :create, :message => "can't be blank"
   validates_presence_of :primary_phone_kind, :on => :create, :message => "can't be blank"
   validates_presence_of :primary_phone, :on => :update, :message => "can't be blank"
@@ -24,5 +26,13 @@ class Contact < ApplicationRecord
   
   def name
     "#{self.first_name} #{self.last_name}"
+  end
+  
+  def current_user_tagged_contacts(tag_name)
+    current_user.contacts.tagged_with([tag_name], :match_all => true) 
+  end
+  
+  def self.current_user_contacts
+    current_user.contacts
   end
 end

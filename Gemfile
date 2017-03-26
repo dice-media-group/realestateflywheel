@@ -104,3 +104,6 @@ gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
 # Implement texter classes for sending SMS messages in similar way to how e-mails are sent with
 # ActionMailer-based mailers.
 gem 'textris', '~> 0.4.4'
+
+# tagging for models like contacts
+gem 'acts-as-taggable-on', '~> 4.0'

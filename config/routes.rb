@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'conversations/untrash'
 
+  get 'tags/:tag', to: 'contacts#index', as: :tag
+
   resources :conversations, only: [:index, :show, :new, :create] do
     member do
       post :reply

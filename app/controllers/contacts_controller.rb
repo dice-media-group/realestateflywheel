@@ -5,7 +5,13 @@ class ContactsController < ApplicationController
 
   # GET /contacts
   def index
-    @contacts = current_user.contacts.all
+    @tag_name = tag_name
+    
+    if @tag_name.to_s.length > 0
+      @contacts = current_user.contacts.tagged_with([@tag_name], :match_all => true) 
+    else
+      @contacts = current_user.contacts
+    end
   end
 
   # GET /contacts/1
@@ -57,6 +63,10 @@ class ContactsController < ApplicationController
       
     end
 
+    def tag_name
+      params[:tag] || ""
+    end
+    
     # Only allow a trusted parameter "white list" through.
     def contact_params
       params.require(:contact).permit(
@@ -79,6 +89,7 @@ class ContactsController < ApplicationController
             :addl_phone_two_kind,
             :lead_source,
             :image,
+            :tag_list,
             {milestones_attributes: [:id, :_destroy, :description, :date]},           
             {photos_attributes: [:id, :_destroy, :description, :image, :remote_image_url]}           
             )
