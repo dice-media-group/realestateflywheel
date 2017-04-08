@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     @tag_name = params[:tag]
     
     if @tag_name.to_s.length > 0
-      @contacts = current_user.contacts.tagged_with("family")
+      @contacts = current_user.contacts.tagged_with(@tag_name)
     else
       @contacts = current_user.contacts
     end
