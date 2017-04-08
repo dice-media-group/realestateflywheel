@@ -5,10 +5,10 @@ class ContactsController < ApplicationController
 
   # GET /contacts
   def index
-    @tag_name = tag_name
+    @tag_name = params[:tag]
     
     if @tag_name.to_s.length > 0
-      @contacts = current_user.contacts.tagged_with([@tag_name], :match_all => true) 
+      @contacts = current_user.contacts.tagged_with("family")
     else
       @contacts = current_user.contacts
     end
@@ -23,7 +23,8 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    @contact = current_user.contacts.new
+    @contact  = current_user.contacts.new
+    # @tags     = [{name: "family"}, {name: "past clients"}, {name: "prospects"}] #available_tags(current_user)
   end
 
   # GET /contacts/1/edit
@@ -67,6 +68,12 @@ class ContactsController < ApplicationController
       params[:tag] || ""
     end
     
+    
+    def available_tags(user)
+      basic_tags = ActsAsTaggableOn::Tag.all.where("basic = ?", true).map(&:name)
+      # current_user_tags = user.contacts.tag_counts_on(:tags)
+      # available_tags    = basic_tags.merge(current_user_tags)
+    end
     # Only allow a trusted parameter "white list" through.
     def contact_params
       params.require(:contact).permit(
@@ -89,7 +96,7 @@ class ContactsController < ApplicationController
             :addl_phone_two_kind,
             :lead_source,
             :image,
-            :tag_list,
+            {:tag_list => []},
             {milestones_attributes: [:id, :_destroy, :description, :date]},           
             {photos_attributes: [:id, :_destroy, :description, :image, :remote_image_url]}           
             )

@@ -14,20 +14,17 @@
   </div>
 
   <div class='field'>
+	  <% tags = ActsAsTaggableOn::Tag.all.order(:name)%>
       <%= f.label :tag_list, 'Tags (separated by commas)' %><br/>
-      <%= f.text_field :tag_list %>
-  </div>
-  	<div class="field" id="rosters">
-  <%= f.association :rosters, 
-                     as: :select, 
-					 collection: Roster.order(:title),
-                     label_method: :title, 
-                     value_method: :id,
+	  <%= f.input :tag_list,
+                     as: :select,
+					 collection: tags,
+                     label_method: :name,
+                     value_method: :name,
 					 include_blank: false,
-	                 input_html: { class: 'chosen-select' }, 
-                     label: 'Contact Rosters' %>
-					 
-	</div>
+	                 input_html: { class: 'chosen-select', multiple: true },
+                     label: 'Contact Tags' %>
+  </div>
 
   <div class="form-inputs">
 	<%= f.input :primary_phone_kind, 
