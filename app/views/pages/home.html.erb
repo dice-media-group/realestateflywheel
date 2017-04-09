@@ -1,7 +1,10 @@
 	<div class="centered-buttons">
 		<p><%= button_to "Contacts", contacts_path, method: "get", class: "contacts button" %></p>
 		<p>&nbsp;</p>
-		<p><%= button_to "Send Text", new_message_path, method: "get", class: "text-message button"  %></p>
+		<p><%= button_to "Text Contact", new_message_path, method: "get", class: "text-message button"  %></p>
+		<p>&nbsp;</p>
+		
+		<p><%= button_to "Text Group", new_broadcast_path, method: "get", class: "text-group button"  %></p>
 		<p>&nbsp;</p>
 		<!-- <p><%= button_to "Settings", new_contact_path, method: "get", class: "settings button"  %></p>
 		<p>&nbsp;</p> -->

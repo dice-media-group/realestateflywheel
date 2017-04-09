@@ -2,13 +2,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :roster, 
-	collection: Roster.order(:title),
-      include_blank: true,
-      input_html: { class: 'chosen-select' }, 
-	prompt: 'Select a Roster',
-	label: 'Roster' %>
-
+  <div class='field'>
+	  <% tags = ActsAsTaggableOn::Tag.all.where('basic = ?', true).order(:name) %>
+	  <%= f.input :tag_list,
+                     as: :select,
+					 collection: tags,
+                     label_method: :name,
+                     value_method: :name,
+					 include_blank: false,
+	                 input_html: { class: 'chosen-select', multiple: true },
+                     label: 'Contact Tags' %>
+  </div>
+	  
 	<div class="field">
 	  <%= f.input :message_script_id, 
 	  		collection: @message_templates,
@@ -31,7 +36,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Broadcast Message to Group" %>
   </div>
   
 <% end %>

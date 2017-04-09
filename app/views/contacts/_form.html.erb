@@ -14,7 +14,7 @@
   </div>
 
   <div class='field'>
-	  <% tags = ActsAsTaggableOn::Tag.all.order(:name)%>
+	  <% tags = ActsAsTaggableOn::Tag.all.where('basic = ?', true).order(:name) %>
       <%= f.label :tag_list, 'Tags (separated by commas)' %><br/>
 	  <%= f.input :tag_list,
                      as: :select,

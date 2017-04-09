@@ -1,10 +1,10 @@
 class Broadcast < ApplicationRecord
+  acts_as_taggable
+  
   belongs_to :user
   belongs_to :roster
   belongs_to :message_script
 
-  validates_presence_of :user, :on => :create, :message => "can't be blank"
-  validates_presence_of :roster, :on => :create, :message => "can't be blank"
   
   def self.dispatch_later(broadcast)
     #schedules a broadcast for the future
@@ -26,6 +26,10 @@ class Broadcast < ApplicationRecord
   end
   
   def self.disseminate_message(message:, roster:)
+    
+    ##
+    ## !! roster needs to be replaced with taggings, ex:  Broadcast.all.tagged_with("family")
+    ##
     #update message title and body
     roster.contacts.each do |contact|
       puts "#{contact.first_name}"
@@ -58,4 +62,8 @@ class Broadcast < ApplicationRecord
     result = message_attributes
   end
   
+  def self.basic_contact_tag_list
+	  tags = ActsAsTaggableOn::Tag.all.where('basic = ?', true).order(:name)
+    
+  end
 end
