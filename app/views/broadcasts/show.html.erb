@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Roster:</strong>
-  <%= @broadcast.roster.title %>
+  <strong>Groups:</strong><%= raw(@broadcast.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
+  
 </p>
 
 <p>

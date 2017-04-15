@@ -19,7 +19,8 @@ class BroadcastsController < ApplicationController
 
   # GET /broadcasts/new
   def new
-    @broadcast = current_user.broadcasts.new
+    @tags               = Broadcast.basic_contact_tag_list
+    @broadcast  = current_user.broadcasts.new
     @message_templates  = MessageTemplate
       .find_originals_and_owned_by_current_user(current_user.id)
       .order(:title)
@@ -34,12 +35,10 @@ class BroadcastsController < ApplicationController
     @broadcast = current_user.broadcasts.new(broadcast_params)
 
     if @broadcast.save
-      # broadcast_sent_forth  = Message.new.send_message_to_roster(roster_id: (broadcast_params["roster_id"]).to_i,
-      #     body: (broadcast_params["message_body"]).to_s,
-      #     user_name: "#{current_user.first_name} #{current_user.last_name}"
-      #     )
-          dispatched_broadcast = Broadcast.dispatch(@broadcast.id)
-      redirect_to @broadcast, notice: 'Broadcast was successfully created.'
+      # add_owned_tag
+      dispatched_broadcast = Broadcast.dispatch(broadcast: @broadcast)
+      
+      redirect_to @broadcast, notice: 'Message to group successfully sent.'
     else
       render :new
     end
@@ -63,9 +62,10 @@ class BroadcastsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_broadcast
-      @broadcast = Broadcast.find(params[:id])
+      @broadcast = current_user.broadcasts.find(params[:id])
     end
 
+    
     # Only allow a trusted parameter "white list" through.
     def broadcast_params
       params.require(:broadcast).permit(:user_id, 
@@ -73,6 +73,7 @@ class BroadcastsController < ApplicationController
         :message_body, 
         :message_title, 
         :message_script_id,
+        {:tag_list => []},
         :dispatched_at
         )
     end
