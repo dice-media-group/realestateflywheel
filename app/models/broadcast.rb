@@ -6,7 +6,7 @@ class Broadcast < ApplicationRecord
 
   
   def self.dispatch(broadcast:)
-    BroadcastDispatcher.new(broadcast: broadcast)
+    BroadcastDispatcher.new(broadcast: broadcast).send
   end
   
   
