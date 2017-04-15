@@ -48,6 +48,10 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   def update
     if @contact.update(contact_params)
+      tag_list = Array(contact_params["tag_list"])
+      tag_list = tag_list.reject(&:empty?)
+      Contact.add_owned_tags(contact: @contact, tag_list: tag_list, user: current_user)
+      
       redirect_to @contact, notice: 'Contact was successfully updated.'
     else
       render :edit
