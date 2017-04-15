@@ -7,14 +7,6 @@ class Broadcast < ApplicationRecord
   
   def self.dispatch(broadcast:)
     BroadcastDispatcher.new(broadcast: broadcast)
-    ## start possible new way
-    # contacts_to_receive_broadcast = user.contacts.tagged_with(roster_tags, :any => true)
-    # return if Array(contacts_to_receive_broadcast).length < 1
-    # assemble message with dispatch time
-    # msg = self.set_what_and_when_of_message(broadcast)
-    #
-    # # disseminate message to contacts
-    # disseminate_message_to_contacts(message: msg, contacts: contacts_to_receive_broadcast)
   end
   
   
