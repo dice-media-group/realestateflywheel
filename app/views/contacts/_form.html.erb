@@ -15,7 +15,6 @@
 
   <div class='field'>
 	  <% tags = ActsAsTaggableOn::Tag.all.where('basic = ?', true).order(:name) %>
-      <%= f.label :tag_list, 'Tags (separated by commas)' %><br/>
 	  <%= f.input :tag_list,
                      as: :select,
 					 collection: tags,
@@ -23,7 +22,7 @@
                      value_method: :name,
 					 include_blank: false,
 	                 input_html: { class: 'chosen-select', multiple: true },
-                     label: 'Contact Tags' %>
+                     label: 'Contact Group Tags' %>
   </div>
 
   <div class="form-inputs">

@@ -2,9 +2,9 @@ class Contact < ApplicationRecord
   acts_as_taggable
   
   ## validations
-  validates_presence_of :primary_phone, :on => :create, :message => "can't be blank"
+  validates_presence_of :primary_phone, :on => :create, :message => "can't be blank on creation"
   validates_presence_of :primary_phone_kind, :on => :create, :message => "can't be blank"
-  validates_presence_of :primary_phone, :on => :update, :message => "can't be blank"
+  validates_presence_of :primary_phone, :on => :update, :message => "can't be blank on update"
   validates_presence_of :primary_phone_kind, :on => :update, :message => "can't be blank"
   
   ## relationships
