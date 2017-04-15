@@ -27,7 +27,7 @@ class BroadcastDispatcher
     contacts.each do |contact|
       # log "#{broadcast.user} sent #{contact.first_name} the message: #{msg.body} "
       # Create the message with the contact as the owner
-      @msg = contact.message.create!(msg.to_h)
+      @msg = contact.messages.create!(msg.to_h)
       Message.dispatch_message_at_the_scheduled_time(@msg)
       messaged_contacts << contact #OpenStruct.new(@msg, contact)
     end
