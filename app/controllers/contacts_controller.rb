@@ -36,7 +36,7 @@ class ContactsController < ApplicationController
     @contact = current_user.contacts.new(contact_params)
 
     if @contact.save
-      tag_list = Array(params["tag_list"])
+      tag_list = Array(contact_params["tag_list"])
       tag_list = tag_list.reject(&:empty?)
       Contact.add_owned_tags(contact: @contact, tag_list: tag_list, user: current_user)
       redirect_to @contact, notice: 'Contact was successfully created.'
