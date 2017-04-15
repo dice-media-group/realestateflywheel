@@ -37,7 +37,7 @@ class BroadcastsController < ApplicationController
     if @broadcast.save
       dispatched_broadcast = Broadcast.dispatch(broadcast: @broadcast)
       
-      redirect_to @broadcast, notice: 'Contact was successfully created.'
+      redirect_to @broadcast, notice: 'Message to group successfully sent.'
     else
       render :new
     end
