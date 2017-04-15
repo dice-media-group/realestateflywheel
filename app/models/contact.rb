@@ -41,4 +41,16 @@ class Contact < ApplicationRecord
   def self.current_user_contacts
     current_user.contacts
   end
+  
+  def self.add_owned_tags(contact:, tag_list:, user:) 
+      owned_tag_list = contact.all_tags_list - contact.tag_list
+      owned_tag_list += Array(tag_list)
+      user.tag(contact, :with => self.stringify(owned_tag_list), :on => :tags)
+      contact.save   
+  end
+
+  def self.stringify(tag_list)
+      tag_list.inject('') { |memo, tag| memo += (tag + ',') }[0..-1]
+  end
+  
 end

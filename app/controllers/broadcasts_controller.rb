@@ -35,6 +35,7 @@ class BroadcastsController < ApplicationController
     @broadcast = current_user.broadcasts.new(broadcast_params)
 
     if @broadcast.save
+      # add_owned_tag
       dispatched_broadcast = Broadcast.dispatch(broadcast: @broadcast)
       
       redirect_to @broadcast, notice: 'Message to group successfully sent.'
@@ -64,6 +65,7 @@ class BroadcastsController < ApplicationController
       @broadcast = current_user.broadcasts.find(params[:id])
     end
 
+    
     # Only allow a trusted parameter "white list" through.
     def broadcast_params
       params.require(:broadcast).permit(:user_id, 

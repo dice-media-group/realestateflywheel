@@ -14,10 +14,7 @@ class BroadcastDispatcher
     roster_tags = roster_tags.reject(&:empty?)
    
     # # create the collection
-    contacts_to_receive_broadcast =[]
-    roster_tags.each do |tag|
-      contacts_to_receive_broadcast << @broadcast.user.contacts.tagged_with(tag)
-    end
+    contacts_to_receive_broadcast = Contact.tagged_with(roster_tags, :on => :tags, :any => true, :owned_by => broadcast.user)
     result = contacts_to_receive_broadcast
   end
 
@@ -25,11 +22,10 @@ class BroadcastDispatcher
     # objects resulting should culminate in some sort of object to test
     messaged_contacts = []
     contacts.each do |contact|
-      # log "#{broadcast.user} sent #{contact.first_name} the message: #{msg.body} "
       # Create the message with the contact as the owner
       @msg = contact.messages.create!(msg.to_h)
-      Message.dispatch_message_at_the_scheduled_time(@msg)
-      messaged_contacts << contact #OpenStruct.new(@msg, contact)
+      # Message.dispatch_message_at_the_scheduled_time(@msg)
+      messaged_contacts << [contact, @msg] #OpenStruct.new(@msg, contact)
     end
     messaged_contacts
   end

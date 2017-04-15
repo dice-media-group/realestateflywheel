@@ -36,6 +36,7 @@ class ContactsController < ApplicationController
     @contact = current_user.contacts.new(contact_params)
 
     if @contact.save
+      Contact.add_owned_tags(contact: @contact, tag_list: Array(params["tag_list"]), user: current_user)
       redirect_to @contact, notice: 'Contact was successfully created.'
     else
       render :new
@@ -67,8 +68,7 @@ class ContactsController < ApplicationController
     def tag_name
       params[:tag] || ""
     end
-    
-    
+     
     def available_tags(user)
       basic_tags = ActsAsTaggableOn::Tag.all.where("basic = ?", true).map(&:name)
       # current_user_tags = user.contacts.tag_counts_on(:tags)
