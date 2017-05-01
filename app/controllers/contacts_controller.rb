@@ -8,7 +8,8 @@ class ContactsController < ApplicationController
     @tag_name = params[:tag]
     
     if @tag_name.to_s.length > 0
-      @contacts = current_user.contacts.tagged_with(@tag_name)
+      # @contacts = current_user.contacts.tagged_with(@tag_name)
+      @contacts = Contact.tagged_with(@tag_name, :on => :tags, :any => true, :owned_by => current_user)
     else
       @contacts = current_user.contacts
     end

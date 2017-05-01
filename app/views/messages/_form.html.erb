@@ -7,7 +7,7 @@
 		<%#= f.input :title %>
         <div class="field" id="contacts">
 			<%= f.association :contact, 
-		  		collection: Contact.order(:first_name),
+		  		collection: @contacts,
                 include_blank: true,
                 input_html: { class: 'chosen-select' }, 
 				prompt: 'Select Contact' %>
