@@ -4,8 +4,20 @@
     text-indent: 15px; 
 }
 </style>
-<h1>New Message</h1>
-<%= button_to "subscribe", new_subscription_path, method: :get %>
-<%= render 'form', message: @message %>
 
-<%= link_to 'Back', messages_path %>
+<% if current_user_subscribed? %>
+	<h1>New Message</h1>
+	<%= render 'form', message: @message %>
+
+	<%= link_to 'Back', messages_path %>
+<% else %>
+	<p>
+		Hi there,<br />
+		
+		It looks like you need to create your subscription for part of this service.<br />
+		<%= button_to "Subscribe to send messages", new_subscription_path, method: :get %>
+		
+	</p>
+		
+<% end %>
+
