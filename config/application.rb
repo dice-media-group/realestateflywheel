@@ -24,9 +24,5 @@ module Realestateflywheel
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.active_job.queue_adapter = :delayed_job
     
-    # allow ngrok network ip's
-    config.web_console.whitelisted_ips = '23.119.1.99'
-    # or a whole network
-    config.web_console.whitelisted_ips = '23.119.0.0/16'
   end
 end
