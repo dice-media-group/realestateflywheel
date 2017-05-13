@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'cards/update'
+
   resource :subscription
+  resource :card
 
   resources :rosters, :roster_contacts
     
