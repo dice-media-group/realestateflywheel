@@ -5,7 +5,7 @@
 }
 </style>
 <h1>New Message</h1>
-
+<%= button_to "subscribe", new_subscription_path, method: :get %>
 <%= render 'form', message: @message %>
 
 <%= link_to 'Back', messages_path %>

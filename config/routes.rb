@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :subscription
+
   resources :rosters, :roster_contacts
     
   get 'conversations/index'

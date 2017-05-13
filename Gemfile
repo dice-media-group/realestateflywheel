@@ -107,3 +107,6 @@ gem 'textris', '~> 0.4.4'
 
 # tagging for models like contacts
 gem 'acts-as-taggable-on', '~> 4.0'
+
+# Stripe API for payment processing
+gem 'stripe', '~> 2.8'
