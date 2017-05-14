@@ -10,11 +10,11 @@ class RecordCharges
     # Record a charge in our database
     c = user.charges.where(stripe_id: charge.id).first_or_create
     c.update(
-      amount: charge.amount,
-      card_last4: charge.last4,
-      card_type: charge.brand,
-      card_exp_month: charge.exp_month,
-      card_exp_year: charge.exp_year
+      amount:         charge.amount,
+      card_last4:     charge.source.last4,
+      card_type:      charge.source.brand,
+      card_exp_month: charge.source.exp_month,
+      card_exp_year:  charge.source.exp_year
     )
   end
 end
