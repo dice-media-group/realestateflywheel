@@ -5,8 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Roster</th>
+      <th>Groups</th>
       <th>Message body</th>
       <th>Message title</th>
       <th>Message script</th>
@@ -17,13 +16,11 @@
   <tbody>
     <% @broadcasts.each do |broadcast| %>
       <tr>
-        <td><%= broadcast.user.first_name if  broadcast.user %></td>
-        <td><%= broadcast.roster.title %></td>
+        <td> <%= raw(broadcast.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %><%#= broadcast.roster.title %></td>
         <td><%= broadcast.message_body %></td>
         <td><%= broadcast.message_title %></td>
         <td><%= broadcast.message_script.title if broadcast.message_script %></td>
         <td><%= link_to 'Show', broadcast %></td>
-        <td><%= link_to 'Destroy', broadcast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
