@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513015112) do
+ActiveRecord::Schema.define(version: 20170514024106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170513015112) do
     t.index ["message_script_id"], name: "index_broadcasts_on_message_script_id", using: :btree
     t.index ["roster_id"], name: "index_broadcasts_on_roster_id", using: :btree
     t.index ["user_id"], name: "index_broadcasts_on_user_id", using: :btree
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.string  "stripe_id"
+    t.integer "amount"
+    t.string  "card_last4"
+    t.string  "card_type"
+    t.string  "card_exp_month"
+    t.string  "card_exp_year"
+    t.integer "user_id"
+    t.index ["stripe_id"], name: "index_charges_on_stripe_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_charges_on_user_id", using: :btree
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -372,6 +384,7 @@ ActiveRecord::Schema.define(version: 20170513015112) do
   add_foreign_key "broadcasts", "message_scripts"
   add_foreign_key "broadcasts", "rosters"
   add_foreign_key "broadcasts", "users"
+  add_foreign_key "charges", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

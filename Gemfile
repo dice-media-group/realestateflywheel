@@ -110,3 +110,4 @@ gem 'acts-as-taggable-on', '~> 4.0'
 
 # Stripe API for payment processing
 gem 'stripe', '~> 2.8'
+gem 'stripe_event', '~> 1.6'

@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :charge do
+    user nil
+  end
 
   sequence :email do |n|
     "person#{n}@example.com"

@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :rosters,          :dependent => :destroy
   has_many :broadcasts,       :dependent => :destroy
+  has_many :charges
 
 
   ## does hmt fit this when we want the dependent attribute?
