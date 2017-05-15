@@ -17,7 +17,7 @@ class SubscriptionsController < ApplicationController
 
     subscription = customer.subscriptions.create(
       source: params[:stripeToken],
-      plan: "basic_subscription"
+      plan: "gold_plan"
     )
 
     current_user.update(
