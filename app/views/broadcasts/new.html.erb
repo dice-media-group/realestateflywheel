@@ -1,6 +1,10 @@
 <h1>New Broadcast</h1>
 
-<%= render 'form', broadcast: @broadcast %>
+<% if current_user_subscribed? %>
+	<%= render 'form', broadcast: @broadcast %>
 
 
-<%= link_to 'Back', broadcasts_path %>
+	<%= link_to 'Back', broadcasts_path %>
+<% else %>
+			<%= render "/shared/subscription_ask" %>
+<% end %>

@@ -1,6 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% if current_user_subscribed? %>
+	<p id="notice"><%= notice %></p>
 
-<%= link_to 'Send New Message', new_message_path %> | <%= link_to 'Create New Broadcast', new_broadcast_path %>
+	<%= link_to 'Send New Message', new_message_path %> | <%= link_to 'Create New Broadcast', new_broadcast_path %>
 
-<%= render partial: "accordion_tabs_minimal" %>
-<br>
+	<%= render partial: "accordion_tabs_minimal" %>
+	<br>
+<% else %>
+	<%= render "/shared/subscription_ask" %>
+		
+<% end %>

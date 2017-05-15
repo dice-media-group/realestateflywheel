@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  mount StripeEvent::Engine, at: '/stripe/webhook'
+
+  get 'cards/update'
+
+  resource :subscription
+  resource :card
+
   resources :rosters, :roster_contacts
     
   get 'conversations/index'

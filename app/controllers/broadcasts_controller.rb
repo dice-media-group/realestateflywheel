@@ -4,7 +4,7 @@ class BroadcastsController < ApplicationController
 
   # GET /broadcasts
   def index
-    @broadcasts = Broadcast.all
+    @broadcasts   = current_user.broadcasts.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @broadcasts }

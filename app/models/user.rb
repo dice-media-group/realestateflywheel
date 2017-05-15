@@ -18,12 +18,16 @@ class User < ApplicationRecord
   has_many :messages
   has_many :rosters,          :dependent => :destroy
   has_many :broadcasts,       :dependent => :destroy
+  has_many :charges
 
 
   ## does hmt fit this when we want the dependent attribute?
   # has_many :contacts,         through: :messages
   
-  
+  def subscribed?
+    stripe_subscription_id?
+  end
+   
   def name
     "#{self.first_name} #{self.last_name}"
   end
