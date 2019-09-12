@@ -91,7 +91,7 @@ gem 'mailboxer', '~> 0.14.0'
 gem 'jquery-ui-rails', '~> 5.0'
 # file uploading
 gem 'carrierwave', '~> 1.0'
-gem 'mini_magick', '~> 4.6', '>= 4.6.1'
+gem 'mini_magick', '~> 4.9'
 gem 'fog', '~> 1.38'
 
 # nested attributes enhanced with jQuery
