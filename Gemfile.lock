@@ -277,7 +277,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-    json (2.1.0)
+    json (2.3.0)
     jwt (1.5.6)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
@@ -546,7 +546,7 @@ DEPENDENCIES
   honeybadger
   jquery-rails
   jquery-ui-rails (~> 5.0)
-  json (~> 2.0, >= 2.0.3)
+  json (~> 2.3)
   launchy
   listen
   mailboxer (~> 0.14.0)
