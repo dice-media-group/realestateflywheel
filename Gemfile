@@ -66,7 +66,7 @@ gem 'refills', group: [:development, :test]
 # static pages
 gem 'high_voltage'
 # backend crud
-gem 'rails_admin', '~> 1.1', '>= 1.1.1'
+gem 'rails_admin', '~> 1.4'
 # model versioning and management
 gem 'paper_trail', '~> 6.0', '>= 6.0.2'
 # user model
