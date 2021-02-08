@@ -90,7 +90,7 @@ gem 'mailboxer', '~> 0.14.0'
 # autocomplete and other js goodies
 gem 'jquery-ui-rails', '~> 5.0'
 # file uploading
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'mini_magick', '~> 4.6', '>= 4.6.1'
 gem 'fog', '~> 1.38'
 
