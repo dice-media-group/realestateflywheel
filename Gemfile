@@ -82,7 +82,7 @@ gem 'signet', '~> 0.7.3'
 # connect with gmail as a webservice
 gem 'json', '~> 2.0', '>= 2.0.3'
 # gem 'google-api-client', '~> 0.9.26'#, require: 'google/api_client'
-gem 'omniauth', '~> 1.4'
+gem 'omniauth', '~> 1.9'
 # gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'twilio-ruby', '~> 4.13'
 # message tracking engine
